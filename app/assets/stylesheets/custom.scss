@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url(http://fonts.googleapis.com/css?family=Raleway);
 
 * {
     font-family: Raleway;
@@ -76,8 +77,8 @@ select {
     height: 7em;
 }
 
-html {
-    background: url('../images/background_full.jpg') no-repeat center center fixed;
+.container-fluid {
+    background: image_url('background_full.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
