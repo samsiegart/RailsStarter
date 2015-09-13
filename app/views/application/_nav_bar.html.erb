@@ -14,8 +14,20 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="/">Home</a>
+          <%= link_to "Home", root_url %>
         </li>
+        <% if !logged_in? %>
+          <li>
+            <%= link_to "Register", signup_url %>
+          </li>
+          <li>
+            <%= link_to "Log in", login_url %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to current_user.name, current_user %>
+          </li>
+        <% end %>
       </ul>
     </div>
     <!-- /.navbar-collapse -->
