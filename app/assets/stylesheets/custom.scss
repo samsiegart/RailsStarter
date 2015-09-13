@@ -1,0 +1,243 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+* {
+    font-family: Raleway;
+    -webkit-font-smoothing: antialiased;
+}
+
+select {
+    -moz-appearance: none;
+}
+
+.anim {
+    -webkit-transform:translate(0px, -100px);
+}
+
+.anim-2 {
+    -webkit-transform:translate(0px, -125px);
+}
+
+.navbar ul li a{
+    margin-top: 22px;
+    font-weight: 600;
+    font-size: 16px;
+    -webkit-transition: color .5s ease-in;
+    transition: color .5s;
+}
+
+.navbar ul li a:hover {
+    color: #FFF;
+}
+
+.navbar-img {
+    margin-top: 10px;
+}
+
+.contact-link {
+    -webkit-transition: all 200ms ease-in;
+    text-decoration: none;
+    font-weight: 500;
+    color: #448AFF;
+}
+
+.contact-link:hover {
+    color: #455A64;
+    text-decoration: none;
+}
+
+.btn {
+    margin-right: 5px;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background-color: #448AFF;
+    color: #FFF;
+    border: none;
+    padding: 10px 20px;
+    font-weight: 800;
+    -webkit-transition: all 209ms ease-in;
+}
+
+.btn:hover {
+    background-color: #455A64;
+    color: #448AFF;
+}
+
+/*changed color of page content bar*/
+.blue {
+    padding: 40px 0px 40px;
+    font-size: 16px;
+    color: #FFF;
+    background-color: #607D8B;
+}
+
+.navbar .container {
+    height: 7em;
+}
+
+html {
+    background: url('../images/background_full.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+body {
+    padding-top: 7em; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+#scroll {
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+}
+
+.home-title {
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.home-subtitle {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.img-center {
+    margin: 0 auto;
+}
+
+.title-margin {
+    margin-top: 15%;
+}
+
+/*alex, changed footer color*/
+footer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #FFFFFF;
+    background-color: #455A64;
+    width: 100%;
+}
+
+ul {
+    list-style: none;
+    padding: 0 10px;
+}
+
+select, input[type="text"], 
+input[type="password"], 
+input[type="datetime"], 
+input[type="datetime-local"], 
+input[type="date"], 
+input[type="month"], 
+input[type="time"], 
+input[type="week"], 
+input[type="number"], 
+input[type="email"], 
+input[type="url"], 
+input[type="search"], 
+input[type="tel"], 
+input[type="color"],
+.uneditable-input {
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    padding: 0 10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 25px;
+    color: #7a7a7a;
+    vertical-align: middle;
+    background: #FFF;
+    -webkit-transition: all 200ms ease-in;
+    border-radius: 3px;
+    box-shadow: none;
+    border: 1px solid;
+}
+
+input[type="file"] {
+    margin: 0 auto;
+}
+
+input[type="checkbox"] {
+    
+}
+
+textarea {
+    display: inline-block;
+    width: 100%;
+    padding: 0 10px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    line-height: 25px;
+    color: #7a7a7a;
+    vertical-align: middle;
+    background: #FFF;
+    -webkit-transition: all 200ms ease-in;
+    border-radius: 3px;
+    box-shadow: none;
+    border: 1px solid;
+}
+
+.reg-title {
+    margin: 60px 0 20px 0;
+}
+
+.required {
+    color: red;
+    font-weight: 800;
+}
+
+.submit {
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-radius: 3px;
+    box-shadow: none;
+    border: 1px solid;
+    height: 40px;
+    font-weight: 400px;
+    color: #fff;
+    background-color: #14aac5;
+    -webkit-transition: color .5s ease-in;
+    transition: color .5s ease-in;
+    -moz-transition: background-color .5s;
+}
+
+.submit:hover {
+    background-color: #117d90;
+}
+
+
+/* Alex's additions */
+/*changed navbar font color*/
+.navbar-inverse .navbar-nav>li>a {
+    color: #FFFFFF;
+}
+/*change navbar background color*/
+.navbar {
+    background-color: #455A64;
+}
+/*removed border from navbar*/
+.navbar-fixed-top {
+    top: 0;
+    border-width: 0;
+}
+.full-screen {
+/*  height: 100vh;*/
+/*  set using javascript */
+}
+.transparent {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #212121;
+}
+
+body {
+  color: #212121;
+}
+
