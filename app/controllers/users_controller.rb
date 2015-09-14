@@ -36,7 +36,7 @@ private
   # Confirms the correct user.
   def correct_user
     @user = User.find(params[:id])
-    redirect_to(root_url) unless current_user?(@user)
+    redirect_to(root_url) unless (current_user?(@user) || current_user.is_admin)
   end
 
   def user_params

@@ -1,4 +1,9 @@
+require 'elasticsearch/model'
+
 class User < ActiveRecord::Base
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
   attr_accessor :remember_token
 
   with_options if: :not_sponsor? do |person|
@@ -68,3 +73,4 @@ class User < ActiveRecord::Base
     self.save(:validate => false)
   end
 end
+User.import
