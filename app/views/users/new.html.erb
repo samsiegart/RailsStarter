@@ -1,16 +1,151 @@
-<h1>Sign up</h1>
-<%= form_for @user do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<h1 class="reg-title">UB Hacking Registration</h1>
+  <p>Thanks for your interest in UBHacking! Please fill in all the fields that you are able to, as it helps us keep track of data.</p>
+  <p><span class="">*</span> Indicates a required field</p>
+  <%= form_for @user do |f| %>
+    <h2 class="group-title">Account Information</h2>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <ul>
+          <li>
+            <%= f.label :email, "Email*" %>
+            <%= f.email_field :email, placeholder: "ubhacking@example.com" %>
+          </li>
+          <li>
+            <%= f.label :password, "Password*" %>
+            <%= f.password_field :password, placeholder: "Password" %>
+          </li>
+          <li>
+            <%= f.label :password_confirmation, "Confirm Password*" %>
+            <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
+          </li>
+        </ul>
+      </div>
+    </div>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %>
+    <h2 class="group-title">Personal Information</h2>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <ul>
+            <li>
+              <%= f.label :first_name, "First Name*" %>
+              <%= f.text_field :first_name, placeholder: "First" %>
+            </li>
+            <li>
+              <%= f.label :last_name, "Last Name*" %>
+              <%= f.text_field :last_name, placeholder: "Last" %>
+            </li>
+            <li>
+              <%= f.label :phone_number, "Phone Number (for Hackathon updates via text)" %>
+              <%= f.text_field :phone_number, placeholder: "123-456-7890" %>
+            </li>
+            <li>
+              <%= f.label :sex, "Gender" %>
+              <%= f.select :sex, [['Select one of the following', ''], ['Male', 'male'], ['Female', 'female'], ['Not Listed', 'unlisted']] %>
+            </li>
+            <li>
+              <%= f.label :school, "School*" %>
+              <%= f.text_field :school, list: 'schools', placeholder: 'School' %>
+              <datalist id="schools">
+                <% School.all.each do |school| %>
+                  <option value="<%= school.name %>"></option>
+                <% end %>
+              </datalist>
+            </li>
+            <li>
+              <%= f.label :major, "Major*" %>
+              <%= f.text_field :major, list: 'majors', placeholder: 'Major' %>
+              <datalist id="majors">
+                <% Major.all.each do |major| %>
+                  <option value="<%= major.name %>"></option>
+                <% end %>
+              </datalist>
+            </li>
+            <li>
+              <%= f.label :year, "Year*" %>
+              <%= f.select :year, [['Freshman', 'freshman'],
+                                   ['Sophomore', 'sophomore'],
+                                   ['Junior', 'junior'],
+                                   ['Senior', 'senior'],
+                                   ['Other', 'other']] %>
+            </li>
+          </ul>
+        </div>
+      </div>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+      <h2 class="group-title">Hackathon Stuff</h2>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <ul>
+            <li>
+              <%= f.label :first_hackathon, "Is this your first hackathon?*" %>
+              <%= f.select :first_hackathon, [['Please select one', nil], ['Yes', true], ['No', false]] %>
+            </li>
+            <li>
+              <%= f.label :hardware, "Are you thinking about working with hardware or software?" %>
+              <%= f.select :hardware, [['Please select one', nil],['Hardware', true],['Software', false],['Undecided',false]] %>
+            </li>
+            <li>
+              <%= f.label :what_are_you_building, "What are you thinking of building?" %>
+              <%= f.text_area :what_are_you_building, rows: 4, class: 'form-reg' %>
+            </li>
+            <li>
+              <%= f.label :what_have_you_build, "Tell us about something you have built in the past" %>
+              <%= f.text_area :what_have_you_build, rows: 4, class: 'form-reg' %>
+            </li>
+            <li>
+              <div>
+                <%= f.label :resume, "Resume: (as .pdf)" %>
+                <%= f.file_field :resume %>
+              </div>
+            </li>
+            <li>
+              <%= f.label :github_username, "GitHub Username" %>
+              <%= f.text_field :github_username, placeholder: "MalcolmReynolds" %>
+            </li>
+            <li>
+              <%= f.label :linkedin_url, "LinkedIn Profile URL" %>
+              <%= f.text_field :linkedin_url, placeholder: "https://www.linkedin.com/in/malcolmreynolds" %>
+            </li>
+            <li>
+              <%= f.label :personal_website, "Personal Website" %>
+              <%= f.text_field :personal_website, placeholder: "http://example.com" %>
+            </li>
+          </ul>
+        </div>
+      </div>
 
-  <%= f.label :password_confirmation, "Confirmation" %>
-  <%= f.password_field :password_confirmation %>
+      <h2 class="group-title">Other</h2>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <ul>
+            <li>
+              <%= f.label :dietary_restrictions, "Do you have any dietary restrictions?*" %>
+              <%= f.select :dietary_restrictions, [['Please select one',''],
+                                                   ['None','none'],
+                                                   ['Vegetarian','vegetarian'],
+                                                   ['Gluten-free','gluten']] %>
+            </li>
+            <li>
+              <%= f.label :size, "T-Shirt Size*" %>
+              <%= f.select :size, [['Please select one',''],
+                                   ['XS','xs'],
+                                   ['S','s'],
+                                   ['M','m'],
+                                   ['L','l'],
+                                   ['XL','xl']] %>
+            </li>
+            <li>
+              <%= f.label :additional_info, "Is there anything else we should know about? (allergies, disabilties, etc.)" %>
+              <%= f.text_area :additional_info, rows: 4, class: 'form-reg' %>
+            </li>
+          </ul>
+        </div>
+      </div>
 
-  <%= f.submit "Create my account", class: "btn btn-primary" %>
-<% end %>
+      <p class="text-center">By submitting, you agree to the terms and conditions and privacy statement found <a href-"#">here</a>.</p>
+
+      <div>
+        <%= f.submit "Submit", class: "submit" %>
+      </div>
+
+    <% end %>

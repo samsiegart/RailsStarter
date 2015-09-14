@@ -11,15 +11,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150911000318) do
+ActiveRecord::Schema.define(version: 20150914024517) do
+
+  create_table "majors", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "schools", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",            limit: 255
-    t.string   "email",           limit: 255
-    t.string   "password_digest", limit: 255
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.string   "remember_digest", limit: 255
+    t.string   "email",                 limit: 255
+    t.string   "password_digest",       limit: 255
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "remember_digest",       limit: 255
+    t.string   "first_name",            limit: 255
+    t.string   "last_name",             limit: 255
+    t.string   "phone_number",          limit: 255
+    t.string   "sex",                   limit: 255
+    t.string   "school",                limit: 255
+    t.string   "major",                 limit: 255
+    t.string   "year",                  limit: 255
+    t.boolean  "first_hackathon",       limit: 1
+    t.boolean  "hardware",              limit: 1
+    t.text     "what_are_you_building", limit: 65535
+    t.text     "what_have_you_build",   limit: 65535
+    t.string   "github_username",       limit: 255
+    t.string   "linkedin_url",          limit: 255
+    t.string   "personal_website",      limit: 255
+    t.string   "dietary_restrictions",  limit: 255
+    t.string   "size",                  limit: 255
+    t.text     "additional_info",       limit: 65535
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
