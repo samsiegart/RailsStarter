@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 gem 'pdf-reader'
 gem 'carrierwave'
 gem 'bootstrap-sass', '~> 3.2.0'
