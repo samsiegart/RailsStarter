@@ -1,0 +1,9 @@
+<h1>Admin Mothership</h1>
+<h2>List of hacker emails:</h2>
+<ul>
+  <% @users.each do |user| %>
+    <% if user.is_hacker? %>
+      <li><%= user.email %></li>
+    <% end %>
+  <% end %>
+</ul>

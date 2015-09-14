@@ -1,7 +1,12 @@
 <h1 class="reg-title">UB Hacking Registration</h1>
   <p>Thanks for your interest in UBHacking! Please fill in all the fields that you are able to, as it helps us keep track of data.</p>
   <p><span class="">*</span> Indicates a required field</p>
-  <%= form_for @user do |f| %>
+  <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+  <%= form_for @user, :html => {:multipart => true} do |f| %>
     <h2 class="group-title">Account Information</h2>
     <div class="panel panel-default">
       <div class="panel-body">

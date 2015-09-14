@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      @user.process_resume
       log_in @user
       flash[:success] = "Welcome"
       redirect_to @user
@@ -39,7 +40,12 @@ private
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :email, :password,
+                                 :password_confirmation, :resume, :phone_number,
+                                 :sex, :school, :major, :year, :first_hackathon,
+                                 :hardware, :what_are_you_building, :what_have_you_build,
+                                 :github_username, :linkedin_url, :personal_website,
+                                 :dietary_restrictions, :size, :additional_info)
   end
 
 end

@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'pdf-reader'
+gem 'carrierwave'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'bcrypt'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -1,12 +1,22 @@
 class User < ActiveRecord::Base
   attr_accessor :remember_token
 
-  before_save { email.downcase! }
+  with_options if: :not_sponsor? do |person|
+    person.validates :last_name, presence: true, length: { maximum: 50 }
+  end
+
+  with_options if: :is_hacker? do |hacker|
+    hacker.validates_presence_of :school, :major, :year, :first_hackathon, :dietary_restrictions, :size
+  end
+
   validates :first_name, presence: true, length: { maximum: 50 }
-  validates :last_name, presence: true, length: { maximum: 50 }
+  before_save { email.downcase! }
   validates :email, presence: true, uniqueness: { case_sensitive: false }
+  validates_format_of :email, :with => /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
+
+  mount_uploader :resume, ResumeUploader
 
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -16,6 +26,14 @@ class User < ActiveRecord::Base
 
   def self.new_token
     SecureRandom.urlsafe_base64
+  end
+
+  def is_hacker?
+    not_sponsor? && !is_admin
+  end
+
+  def not_sponsor?
+    sponsorship.blank?
   end
 
   def remember
@@ -33,7 +51,20 @@ class User < ActiveRecord::Base
   end
 
   def name
-    return "Hacker" if first_name.blank? && last_name.blank?
+    return "My Account" if first_name.blank? && last_name.blank?
     [first_name, last_name].join(' ')
+  end
+
+  def process_resume
+    return if resume.blank?
+    filename = resume.path
+    text = ""
+    PDF::Reader.open(filename) do |reader|
+      reader.pages.each do |page|
+        text += page.text
+      end
+    end
+    self.resume_text = text
+    self.save(:validate => false)
   end
 end

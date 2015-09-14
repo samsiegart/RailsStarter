@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150914024517) do
+ActiveRecord::Schema.define(version: 20150914162543) do
 
   create_table "majors", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -48,6 +48,10 @@ ActiveRecord::Schema.define(version: 20150914024517) do
     t.string   "dietary_restrictions",  limit: 255
     t.string   "size",                  limit: 255
     t.text     "additional_info",       limit: 65535
+    t.string   "resume",                limit: 255
+    t.string   "sponsorship",           limit: 255
+    t.boolean  "is_admin",              limit: 1
+    t.text     "resume_text",           limit: 65535
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

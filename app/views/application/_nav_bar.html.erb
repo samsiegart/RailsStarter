@@ -27,6 +27,15 @@
           <li>
             <%= link_to current_user.name, current_user %>
           </li>
+          <% if current_user.is_admin %>
+            <li>
+              <%= link_to "Admin", admin_index_url %>
+            </li>
+          <% elsif !current_user.not_sponsor? %>
+            <li>
+              <%= link_to "Sponsor Tools", current_user %>
+            </li>
+          <% end %>
         <% end %>
       </ul>
     </div>
