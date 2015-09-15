@@ -72,5 +72,19 @@ class User < ActiveRecord::Base
     self.resume_text = text
     self.save(:validate => false)
   end
+
+  def process_school
+    stored_school = School.find_by_name(self.school)
+    if stored_school.blank?
+      School.create({:name => self.school})
+    end
+  end
+
+  def process_major
+    stored_major = Major.find_by_name(self.major)
+    if stored_major.blank?
+      Major.create({:name => self.major})
+    end
+  end
 end
 User.import

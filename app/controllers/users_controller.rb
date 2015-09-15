@@ -10,6 +10,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       @user.process_resume
+      @user.process_school
+      @user.process_major
       log_in @user
       flash[:success] = "Welcome"
       redirect_to @user

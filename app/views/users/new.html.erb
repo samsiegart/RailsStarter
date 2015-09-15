@@ -41,11 +41,11 @@
             </li>
             <li>
               <%= f.label :phone_number, "Phone Number (for Hackathon updates via text)" %>
-              <%= f.text_field :phone_number, placeholder: "123-456-7890" %>
+              <%= f.phone_field :phone_number, placeholder: "123-456-7890" %>
             </li>
             <li>
               <%= f.label :sex, "Gender" %>
-              <%= f.select :sex, [['Select one of the following', ''], ['Male', 'male'], ['Female', 'female'], ['Not Listed', 'unlisted']] %>
+              <%= f.select :sex, [['Select one of the following', nil], ['Male', 'male'], ['Female', 'female'], ['Not Listed', 'unlisted']] %>
             </li>
             <li>
               <%= f.label :school, "School*" %>
