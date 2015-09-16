@@ -5,6 +5,29 @@ class AdminController < ApplicationController
     @users = User.all
   end
 
+####TODO#############
+  def post_announcement
+  end
+
+  def give_admin
+  end
+
+  def new_sponsor
+  end
+
+  def create_sponsor
+  end
+
+  def accept_hacker
+  end
+
+  def reject_hacker
+  end
+
+  def sign_in_hacker_irl
+  end
+#####################
+
 private
 
   def user_is_admin
@@ -18,4 +41,5 @@ private
       redirect_to login_url
     end
   end
+
 end

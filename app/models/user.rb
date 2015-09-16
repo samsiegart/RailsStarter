@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: { case_sensitive: false }
   validates_format_of :email, :with => /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, on: :create
 
   mount_uploader :resume, ResumeUploader
 
@@ -70,7 +70,7 @@ class User < ActiveRecord::Base
       end
     end
     self.resume_text = text
-    self.save(:validate => false)
+    self.save
   end
 
   def process_school
